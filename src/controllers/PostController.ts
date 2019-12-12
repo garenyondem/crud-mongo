@@ -10,6 +10,7 @@ interface IPostController {
 
 class PostController implements IPostController {
     async create(ctx: Context, next: Function): Promise<void> {
+        console.info('Creating new post');
         const post = ctx.request.body;
         try {
             const insertedPost = await PostService.insertPost(post);
@@ -22,6 +23,7 @@ class PostController implements IPostController {
         next();
     }
     async read(ctx: Context, next: Function): Promise<void> {
+        console.info('Reading post');
         const postId = ctx.params.postId;
         try {
             const post = await PostService.getPost(postId);
@@ -34,6 +36,7 @@ class PostController implements IPostController {
         next();
     }
     async update(ctx: Context, next: Function): Promise<void> {
+        console.info('Updating post');
         const postId = ctx.params.postId;
         const post = ctx.request.body;
         try {
@@ -47,6 +50,7 @@ class PostController implements IPostController {
         next();
     }
     async delete(ctx: Context, next: Function): Promise<void> {
+        console.info('Removing post');
         const postId = ctx.params.postId;
         try {
             await PostService.deletePost(postId);
