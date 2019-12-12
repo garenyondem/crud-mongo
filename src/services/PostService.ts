@@ -21,10 +21,10 @@ class PostService implements IPostService {
         return PostModel.findByIdAndUpdate(postId, post, options);
     }
     async deletePost(postId: string): Promise<any> {
-        const query = {
-            _id: postId,
+        const update = {
+            deletedAt: new Date(),
         };
-        return PostModel.deleteOne(query);
+        return PostModel.findByIdAndUpdate(postId, update);
     }
 }
 
