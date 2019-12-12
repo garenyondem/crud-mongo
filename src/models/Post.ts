@@ -1,6 +1,7 @@
-import { Schema, Document, model } from 'mongoose';
+import { Schema, Document, model, Types } from 'mongoose';
 
 export interface IPost extends Document {
+    _id: Types.ObjectId;
     text: string;
     authorName: string;
     deletedAt: Date;
