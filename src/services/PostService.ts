@@ -3,7 +3,7 @@ import { PostModel, IPost } from '../models/Post';
 interface IPostService {
     insertPost(post: IPost): Promise<IPost>;
     getPost(postId: string): Promise<IPost | null>;
-    updatePost(postId: string, post: IPost): Promise<IPost>;
+    updatePost(postId: string, post: IPost): Promise<IPost | null>;
     deletePost(postId: string): Promise<any>;
 }
 
@@ -14,14 +14,11 @@ class PostService implements IPostService {
     async getPost(postId: string): Promise<IPost | null> {
         return PostModel.findById(postId);
     }
-    async updatePost(postId: string, post: IPost): Promise<IPost> {
-        const query = {
-            _id: postId,
-        };
+    async updatePost(postId: string, post: IPost): Promise<IPost | null> {
         const options = {
             new: true,
         };
-        return PostModel.update(query, post, options);
+        return PostModel.findByIdAndUpdate(postId, post, options);
     }
     async deletePost(postId: string): Promise<any> {
         const query = {
