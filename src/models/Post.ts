@@ -21,7 +21,7 @@ const PostSchema: Schema = new Schema(
             type: Date,
         },
     },
-    { timestamps: true }
+    { timestamps: true, versionKey: false }
 );
 
 export const PostModel = model<IPost>('Post', PostSchema);
