@@ -5,6 +5,7 @@ import { MONGOOSE_EVENT, NODE_ENV } from '../utils/Enums';
 const options: ConnectionOptions = {
     useNewUrlParser: true,
     useFindAndModify: false,
+    useUnifiedTopology: true,
 };
 
 if (config.node.env == NODE_ENV.DEVELOPMENT) {
