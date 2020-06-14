@@ -1,4 +1,4 @@
-version: "3"
+version: "3.8"
 services:
   app:
     container_name: app
@@ -10,12 +10,18 @@ services:
       - "8888:2323"
     depends_on:
       - mongo_db
-    links: 
+    links:
       - mongo_db
+    command: sh -c "/wait && /start.sh"
+    environment:
+      - WAIT_HOSTS=mongo_db:27017
+      - WAIT_HOSTS_TIMEOUT=300
+      - WAIT_SLEEP_INTERVAL=30
+      - WAIT_HOST_CONNECT_TIMEOUT=30
 
   mongo_db:
     container_name: mongo_db
-    image: mongo
+    image: mongo:latest
     ports:
       - "27017:27017"
     volumes:
