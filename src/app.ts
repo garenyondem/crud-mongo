@@ -1,6 +1,5 @@
 import Koa from 'koa';
 import convert from 'koa-convert';
-// @ts-ignore
 import respond from 'koa-respond';
 import koaBody from 'koa-body';
 import responseTime from 'koa-response-time';
