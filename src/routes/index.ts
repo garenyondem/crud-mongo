@@ -1,7 +1,6 @@
 import PostRoutes from './PostRoutes';
 import Router from 'koa-router';
-// @ts-ignore
-import { compose } from 'koa-convert';
+import compose from 'koa-compose';
 
 const router = new Router({ prefix: '/api' }).use(PostRoutes());
 
