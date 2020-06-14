@@ -2,7 +2,7 @@ import Koa from 'koa';
 import convert from 'koa-convert';
 // @ts-ignore
 import respond from 'koa-respond';
-import bodyParser from 'koa-bodyparser';
+import koaBody from 'koa-body';
 import responseTime from 'koa-response-time';
 
 class App {
@@ -13,7 +13,7 @@ class App {
         this.mountMiddlewares();
     }
     private mountMiddlewares(): void {
-        this.app.use(bodyParser());
+        this.app.use(koaBody());
         this.app.use(responseTime());
         const respondOptions = {
             statusMethods: {
