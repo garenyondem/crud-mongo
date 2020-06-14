@@ -3,6 +3,7 @@ import convert from 'koa-convert';
 // @ts-ignore
 import respond from 'koa-respond';
 import bodyParser from 'koa-bodyparser';
+import responseTime from 'koa-response-time';
 
 class App {
     public app: Koa;
@@ -13,6 +14,7 @@ class App {
     }
     private mountMiddlewares(): void {
         this.app.use(bodyParser());
+        this.app.use(responseTime());
         const respondOptions = {
             statusMethods: {
                 unprocessableEntity: 422,
