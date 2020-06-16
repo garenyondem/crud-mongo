@@ -1,9 +1,10 @@
-import dotenv from 'dotenv';
+import dotenv from 'dotenv-safe';
 import { NODE_ENV } from '../utils/Enums';
 
-const envFound = dotenv.config();
-if (!envFound) {
-    console.error('Could not find .env file or it is not specified');
+try {
+    dotenv.config();
+} catch (err) {
+    console.error(`Config load error ${err}`);
     process.exit();
 }
 
